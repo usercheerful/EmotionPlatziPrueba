@@ -1,0 +1,28 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>_MyLayout</title>
+
+    <!--<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>-->
+
+    <!--OTRA FORMA DE ESPECIFICAR LOS ESTILOS SEGUN LA VISTA QUE SE UTILIZA-->
+    <!--1er parametro-> Nombre de la seccion 2do param->si es requerido, en este caso es false(opcional)-->
+    @RenderSection("scripts", required:false) 
+
+</head>
+<body>
+    <h1>Este es un nuevo layout</h1>
+    <div> 
+        <!--Aqui se mostrara en contenido de las paginas que utilizan este Layout-->
+        @RenderBody()
+    </div>
+</body>
+</html>

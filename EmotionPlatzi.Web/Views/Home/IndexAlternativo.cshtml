@@ -1,0 +1,12 @@
+﻿<!--Esta linea hace que la Vista sea fuertemenete tipada, solo puedo enviar objetos del mismo tipo de modelo-->
+<!--Si no quiero que sea tipada y reciba cuelquier tipo de objeto, solamente borrarla-->
+@model EmotionPlatzi.Web.Models.Home
+
+@{
+    ViewBag.Title = "IndexAlternativo";
+}
+
+<h2>IndexAlternativo</h2>
+
+<h2>@Model.WelcomeMessage</h2>
+<h4>@Model.FooterMessage</h4>

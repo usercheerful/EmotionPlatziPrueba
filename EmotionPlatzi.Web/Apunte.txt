@@ -1,0 +1,81 @@
+﻿El proyecto se creó como "Aplicacion web ASP.NET"
+Elegir Empty, y marcar MVC y WebAPI
+
+=======================================
+Instalar Microsoft.ProjectOxford.Emotion :
+-Ir a Referencias , click derecho y elegir "Administrar Paquetes Nuget"
+-En la pestaña Examinar Buscar "Emotion"
+-Elegir Microsoft.ProjectOxford.Emotion, e Instalar
+=========================================
+
+Realizar New scaffolding Para cada Clase
+Crearlo con "Controlador MVC5 Vista usando Entity Framework"
+
+Se utilizo un solo WebContext para los 3 controladores, en la primera creacion del scaffolding
+se tiene q crear, y en las siguientes creaciones de controladores se tiene q asignar solamente
+
+Verificar el final del archivo del web Context, se borraron algunas palabras innecesarias,
+Quedaria al final asi : public DbSet<EmoPicture> EmoPictures { get; set; }
+
+==================
+
+Se agrego Codigo en el webcontext, para realizar una accion cada vez que se hague un cambio al modelo
+
+=============
+CREAMOS UN MODELO HOME, SE LE AGREGO UN CONTROLLER, QUE SE IMPLEMENTARA EL CODIGO DE CERO, SIN SCAFFOLDING,
+SE ELIGIO "AGREGAR/CONTROLADOR/CONTROLADOR DE MVC5 : EN BLANCO"
+LUEGO CREAMOS UNA VISTA QUE ESTE ATADA AL CONTROLADOR
+
+====
+CLASE: CREANDO APIs CON WEB API
+====
+CREAMOS UN CONTROLLER
+AGREGAR/CONTROLADOR/ WEB API2 CONTROLLER CON ACCIONES QUE USAN ENTITY FRAMEWORK
+
+Model Class: EmoPicture(...)
+Data Context: --El Mismo que se creo inicialmente--
+Controllername:EmoPicturesAPIController
+
+====================
+DIFERENCIA ENTRE CONTROLADOR API Y CONTROLADOR MVC
+
+C.A. 
+-Hereda de API Controller
+-Devuelve un Iqueryable (algo q permite hacer consultas), al final se convierten
+en datos expuestos por JSON
+
+C. MVC
+- Hereda de Controller
+-Devuelven Acciones(ActionResult)
+====
+CREAMOS UN CONTROLLER
+AGREGAR/CONTROLADOR/ WEB API2 CONTROLLER CON ACCIONES QUE USAN ENTITY FRAMEWORK
+
+Model Class: EmoFace(...)
+Data Context: --El Mismo que se creo inicialmente--
+Controllername:EmoFacesAPIController
+
+====================
+
+POR DEFECTO LA BASE DE DATOS EN LA NUBE(AZURE) SOLO PERMITE
+ABRIR UNA CONEXION DE CONSULTA POR TEMAS DE SEGURIDAD, POR ELLO AL EJECUTAR Y REALIZAR UN GET A LA API CON
+LA APLICACION JaSON APARECERA UN ERROR RELACIONADO AL DATA READER, QUE ESTA RELACIONADO CON CONEXIONES MULTIPLES
+
+PARA ESTE CASO SE REALIZA UNA CONEXION PARA EMOPICTURES (1 CONSULTA) LUEGO CONSULTA
+A EMOFACES(2 CONSULTA)
+
+PARA SOLUCIONAR SE DEBE MODIFICAR LA CONEXION DE AZURE EN EL WEB.CONFIG
+
+====
+CLASE: Crear dinámicamente la documentación del API
+====
+
+En referencias ir a "Administrar paquetes Nuget"
+En Examinar buscar webapi help
+Instalar Microsoft.aspnet.webapi.helpPage
+Se creara una carpeta "Areas"-> representa una aplicacion mvc completa
+
+=====
+Para explorar la documentacion ir a:
+http://localhost:51955/Help 
+
